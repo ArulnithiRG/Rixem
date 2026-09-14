@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Quiet Authority design tokens — ported verbatim from the approved
+ * `GenGRC Website.dc.html` prototype (project/GenGRC Website.dc.html) so
+ * every component can style against the same var(--*) values the design
+ * was built and signed off with.
+ */
+:root {
+  --color-bg: #fbfaf7;
+  --color-text: #1a2138;
+  --color-divider: #e3e6ec;
+  --color-neutral-200: #eef0f3;
+  --color-accent: #4d8bff;
+  --color-accent-100: #e4edff;
+  --color-accent-300: #8fb8ff;
+  --color-accent-400: #6aa0ff;
+  --color-accent-500: #4d8bff;
+  --color-accent-600: #3a72d9;
+  --color-accent-700: #2f5bb0;
+  --color-accent-800: #1f3f80;
+  --color-accent-900: #1a2138;
+  --color-signal: #ff6a52;
+
+  --font-heading: 'Inter', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+
+  --space-1: 3.4px;
+  --space-2: 6.8px;
+  --space-3: 10.2px;
+  --space-4: 13.6px;
+  --space-6: 20.4px;
+  --space-8: 27.2px;
+
+  --shadow-sm: 0 1px 2px rgba(43, 43, 45, 0.14);
+  --shadow-md: 0 3px 10px rgba(43, 43, 45, 0.16);
+  --shadow-lg: 0 12px 32px rgba(43, 43, 45, 0.22);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-accent-900);
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  margin: 0;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--color-accent-700);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* RIXEM wordmark — the "I" is three stacked rectangles: currentColor cap,
+   coral hairline, azure stem. Scales from font-size; colour inherits. */
+.rixem-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: currentColor;
+  display: inline-flex;
+  align-items: baseline;
+}
+.rixem-logo i {
+  position: relative;
+  display: inline-block;
+  width: 0.235em;
+  height: 0.706em;
+  margin: 0 0.2em 0 0.08em;
+}
+.rixem-logo i b,
+.rixem-logo i u,
+.rixem-logo i s {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+.rixem-logo i b {
+  top: 0;
+  height: 25%;
+  background: currentColor;
+}
+.rixem-logo i u {
+  top: 25%;
+  height: 8%;
+  background: #ff6a52;
+}
+.rixem-logo i s {
+  bottom: 0;
+  height: 67%;
+  background: #4d8bff;
+}
+
+.nav-link-hover:hover {
+  color: var(--color-accent-300) !important;
+}
+
+.nav-demo-btn:hover {
+  background: var(--color-accent-600) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(77, 139, 255, 0.4);
+}
+
+.hero-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(106, 160, 255, 0.45);
+}
+
+.hero-cta-secondary:hover {
+  background: rgba(251, 250, 247, 0.14);
+  border-color: var(--color-accent-300) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-accent) !important;
+}
+
+.outline-btn:hover {
+  background: var(--color-accent-100) !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 4px 14px rgba(77, 139, 255, 0.2);
+}
+
+.final-cta-primary-btn:hover {
+  background: var(--color-accent-600) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(77, 139, 255, 0.45);
+}
+
+.about-photo-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+  .about-photo-card {
+    max-width: 320px !important;
+    justify-self: center !important;
+  }
+  .site-nav {
+    display: none !important;
+  }
+  .how-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .how-frame {
+    aspect-ratio: 2 / 7 !important;
+  }
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+  .nav-contact-link {
+    display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-demo-btn {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
