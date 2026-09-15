@@ -49,7 +49,7 @@ const CARDS: Card[] = [
       </svg>
     ),
     illustration:
-      '<svg viewBox="0 0 600 200" width="100%" height="100%" role="img" aria-label="Current risk moving toward the target state as initiatives close the gap"><rect x="60" y="92" width="480" height="16" rx="8" fill="#e3e6ec"/><rect x="400" y="92" width="140" height="16" rx="8" fill="#cfe0ff"/><line x1="130" y1="100" x2="420" y2="100" stroke="#4d8bff" stroke-width="4" stroke-dasharray="7 8" stroke-linecap="round"/><circle cx="227" cy="100" r="8" fill="#4d8bff"/><circle cx="323" cy="100" r="8" fill="#4d8bff"/><circle cx="130" cy="100" r="14" fill="#1a2138"/><circle cx="420" cy="100" r="13" fill="#fff" stroke="#4d8bff" stroke-width="4"/><text x="130" y="62" text-anchor="middle" font-family="inherit" font-size="16" font-weight="600" fill="#1a2138">Today</text><text x="420" y="62" text-anchor="middle" font-family="inherit" font-size="16" font-weight="600" fill="#2f5bb0">Target</text><text x="275" y="148" text-anchor="middle" font-family="inherit" font-size="14" fill="#5b6577">Initiatives close the gap</text><text x="470" y="148" text-anchor="middle" font-family="inherit" font-size="14" fill="#2f5bb0">Your appetite</text></svg>',
+      '<svg viewBox="0 0 600 200" width="100%" height="100%" role="img" aria-label="Risk moving from baseline through today toward the target state as initiatives close the gap"><rect x="60" y="92" width="480" height="16" rx="8" fill="#e3e6ec"/><rect x="420" y="92" width="120" height="16" rx="8" fill="#cfe0ff"/><line x1="110" y1="100" x2="300" y2="100" stroke="#1a2138" stroke-width="4" stroke-linecap="round"/><line x1="300" y1="100" x2="510" y2="100" stroke="#4d8bff" stroke-width="4" stroke-dasharray="7 8" stroke-linecap="round"/><circle cx="370" cy="100" r="7" fill="#4d8bff"/><circle cx="440" cy="100" r="7" fill="#4d8bff"/><circle cx="110" cy="100" r="12" fill="#1a2138"/><circle cx="300" cy="100" r="11" fill="#4d8bff" stroke="#fff" stroke-width="3"/><circle cx="510" cy="100" r="13" fill="#fff" stroke="#4d8bff" stroke-width="4"/><text x="110" y="62" text-anchor="middle" font-family="inherit" font-size="14" font-weight="600" fill="#5b6577">Baseline</text><text x="300" y="62" text-anchor="middle" font-family="inherit" font-size="16" font-weight="600" fill="#1a2138">Today</text><text x="510" y="62" text-anchor="middle" font-family="inherit" font-size="16" font-weight="600" fill="#2f5bb0">Target</text><text x="405" y="148" text-anchor="middle" font-family="inherit" font-size="14" fill="#5b6577">Initiatives close the gap</text><text x="480" y="168" text-anchor="middle" font-family="inherit" font-size="14" fill="#2f5bb0">Your appetite</text></svg>',
   },
   {
     chip: 'Risk Register',
@@ -154,7 +154,7 @@ export default function WhatRixemDoes() {
           <ChevronIcon direction="right" />
         </button>
         <div ref={trackRef} style={{ height: '100%', display: 'flex', alignItems: 'center', overflowX: 'hidden', overflowY: 'hidden' }}>
-          <div style={{ display: 'flex', gap: 'var(--space-6)', padding: '0 calc(50% - 340px)', width: 'max-content' }}>
+          <div style={{ display: 'flex', gap: 'var(--space-6)', padding: '0 calc(50% - 300px)', width: 'max-content' }}>
             {CARDS.map((card, i) => {
               const isActive = active === i;
               return (
@@ -162,12 +162,12 @@ export default function WhatRixemDoes() {
                   key={card.chip}
                   style={{
                     flex: 'none',
-                    width: 680,
-                    height: 'min(56vh, 460px)',
+                    width: 600,
+                    height: 'min(46vh, 400px)',
                     border: `2px solid ${isActive ? 'var(--color-accent-300)' : 'rgba(251,250,247,0.2)'}`,
                     borderRadius: 24,
                     background: 'var(--color-bg)',
-                    padding: 'var(--space-6)',
+                    padding: 'var(--space-4)',
                     display: 'flex',
                     flexDirection: 'column',
                     gap: 'var(--space-3)',

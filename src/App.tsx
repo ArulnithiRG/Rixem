@@ -6,8 +6,8 @@ import WhatRixemDoes from '@/sections/WhatRixemDoes';
 import HowRixemWorks from '@/sections/HowRixemWorks';
 import About from '@/sections/About';
 import FinalCTA from '@/sections/FinalCTA';
-import BackedBy from '@/sections/BackedBy';
 import Footer from '@/sections/Footer';
+// BackedBy (Microsoft/UQ Ventures badges) is hidden pending language approval — see sections/BackedBy.tsx.
 
 export interface AppProps {
   /** Destination for every "Request a Demo" CTA. */
@@ -22,7 +22,7 @@ export interface AppProps {
  * transparent so the backdrop shows through as one continuous panel.
  *
  * Section order: Header+Hero, Why Choose Rixem, What Rixem Does, How Rixem
- * Works, About, Final CTA, Backed-by trust band, Footer.
+ * Works, About, Final CTA, Footer.
  */
 export default function App({ ctaHref = 'mailto:farah@rixem.co?subject=Rixem%20demo%20request' }: AppProps) {
   return (
@@ -39,7 +39,6 @@ export default function App({ ctaHref = 'mailto:farah@rixem.co?subject=Rixem%20d
       <HowRixemWorks />
       <About />
       <FinalCTA ctaHref={ctaHref} />
-      <BackedBy />
       <Footer />
     </div>
   );

@@ -1,10 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 
 /**
- * Drives the "How Rixem Works" embed: a scroll-reveal fade/slide (fires once,
- * threshold 0.25) plus a dynamic iframe height driven by postMessage from
- * the embedded page ({ type: 'rixem-how:height', height }), so the white
- * card fits its content exactly instead of relying on a fixed aspect ratio.
+ * Drives the "How Rixem Works" embed: a scroll-reveal fade/slide that
+ * replays every time the section crosses the 0.25 viewport threshold (not
+ * just the first time), plus a dynamic iframe height driven by postMessage
+ * from the embedded page ({ type: 'rixem-how:height', height }), so the
+ * white card fits its content exactly instead of relying on a fixed aspect
+ * ratio.
+ *
+ * Note: this only re-triggers the section's own fade/slide wrapper. The
+ * graph animation *inside* the embedded iframe has its own independent
+ * reveal logic that isn't controlled from here.
  */
 export function useHowItWorksFrame() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -25,10 +31,7 @@ export function useHowItWorksFrame() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
-          setRevealed(true);
-          observer.disconnect();
-        }
+        setRevealed(entries[0].isIntersecting);
       },
       { threshold: 0.25 },
     );
