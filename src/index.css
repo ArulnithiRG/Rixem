@@ -158,6 +158,11 @@ a:hover {
   box-shadow: var(--shadow-md);
 }
 
+.carousel-nav-btn:not(:disabled):hover {
+  background: rgba(251, 250, 247, 0.18) !important;
+  border-color: rgba(251, 250, 247, 0.4) !important;
+}
+
 @media (max-width: 900px) {
   .hero-grid {
     grid-template-columns: 1fr !important;

@@ -5,9 +5,8 @@ import WhyChooseRixem from '@/sections/WhyChooseRixem';
 import WhatRixemDoes from '@/sections/WhatRixemDoes';
 import HowRixemWorks from '@/sections/HowRixemWorks';
 import About from '@/sections/About';
-import Mission from '@/sections/Mission';
 import FinalCTA from '@/sections/FinalCTA';
-import Marketplace from '@/sections/Marketplace';
+import BackedBy from '@/sections/BackedBy';
 import Footer from '@/sections/Footer';
 
 export interface AppProps {
@@ -23,7 +22,7 @@ export interface AppProps {
  * transparent so the backdrop shows through as one continuous panel.
  *
  * Section order: Header+Hero, Why Choose Rixem, What Rixem Does, How Rixem
- * Works, About, Mission, Final CTA, Marketplace trust band, Footer.
+ * Works, About, Final CTA, Backed-by trust band, Footer.
  */
 export default function App({ ctaHref = 'mailto:farah@rixem.co?subject=Rixem%20demo%20request' }: AppProps) {
   return (
@@ -39,9 +38,8 @@ export default function App({ ctaHref = 'mailto:farah@rixem.co?subject=Rixem%20d
       <WhatRixemDoes />
       <HowRixemWorks />
       <About />
-      <Mission />
       <FinalCTA ctaHref={ctaHref} />
-      <Marketplace />
+      <BackedBy />
       <Footer />
     </div>
   );

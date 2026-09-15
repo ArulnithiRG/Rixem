@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { useFeaturesCarousel } from '@/hooks/useFeaturesCarousel';
 
 interface Card {
@@ -34,7 +35,7 @@ const CARDS: Card[] = [
       </svg>
     ),
     illustration:
-      '<svg viewBox="0 0 600 200" width="100%" height="100%" role="img" aria-label="One fix reduces three risks at once, so it is ranked first"><path d="M274 106 C352 106 352 166 421 166" fill="none" stroke="#c3c8d2" stroke-width="1.3"/><path d="M274 156 C352 156 352 126 421 126" fill="none" stroke="#c3c8d2" stroke-width="1.3"/><path d="M274 56 C352 56 352 46 421 46" fill="none" stroke="#4d8bff" stroke-width="2"/><path d="M274 56 C352 56 352 86 421 86" fill="none" stroke="#4d8bff" stroke-width="2"/><path d="M274 56 C352 56 352 126 421 126" fill="none" stroke="#4d8bff" stroke-width="2"/><rect x="60" y="39" width="214" height="34" rx="17" fill="#fff" stroke="#4d8bff" stroke-width="2"/><text x="80" y="60.5" font-family="inherit" font-size="13" font-weight="600" fill="#1a2138">Patch exposed servers</text><rect x="60" y="89" width="214" height="34" rx="17" fill="#fff" stroke="#e3e6ec" stroke-width="1"/><text x="80" y="110.5" font-family="inherit" font-size="13" font-weight="500" fill="#5b6577">Enforce MFA</text><rect x="60" y="139" width="214" height="34" rx="17" fill="#fff" stroke="#e3e6ec" stroke-width="1"/><text x="80" y="160.5" font-family="inherit" font-size="13" font-weight="500" fill="#5b6577">Harden cloud config</text><text x="62" y="28" font-family="inherit" font-size="12" font-weight="600" fill="#2f5bb0">Fix first: reduces 3 risks</text><circle cx="430" cy="46" r="9" fill="#fff" stroke="#5b6577" stroke-width="1.6"/><text x="448" y="50.5" font-family="inherit" font-size="12" fill="#5b6577">Payment services</text><circle cx="430" cy="86" r="9" fill="#fff" stroke="#5b6577" stroke-width="1.6"/><text x="448" y="90.5" font-family="inherit" font-size="12" fill="#5b6577">Customer trust</text><circle cx="430" cy="126" r="9" fill="#fff" stroke="#5b6577" stroke-width="1.6"/><text x="448" y="130.5" font-family="inherit" font-size="12" fill="#5b6577">Cloud resilience</text><circle cx="430" cy="166" r="9" fill="#fff" stroke="#5b6577" stroke-width="1.6"/><text x="448" y="170.5" font-family="inherit" font-size="12" fill="#5b6577">Regulatory</text></svg>',
+      '<svg viewBox="0 0 600 200" width="100%" height="100%" role="img" aria-label="One fix reduces three risks at once, so it is ranked first"><path d="M350 106 C385 106 385 166 406 166" fill="none" stroke="#c3c8d2" stroke-width="1.3"/><path d="M274 156 C352 156 352 126 406 126" fill="none" stroke="#c3c8d2" stroke-width="1.3"/><path d="M310 56 C365 56 365 46 406 46" fill="none" stroke="#4d8bff" stroke-width="2"/><path d="M310 56 C365 56 365 86 406 86" fill="none" stroke="#4d8bff" stroke-width="2"/><path d="M310 56 C365 56 365 126 406 126" fill="none" stroke="#4d8bff" stroke-width="2"/><rect x="60" y="39" width="250" height="34" rx="17" fill="#fff" stroke="#4d8bff" stroke-width="2"/><text x="78" y="60.5" font-family="inherit" font-size="11.5" font-weight="600" fill="#1a2138">Patch internet-facing vulns</text><rect x="60" y="89" width="290" height="34" rx="17" fill="#fff" stroke="#e3e6ec" stroke-width="1"/><text x="78" y="110.5" font-family="inherit" font-size="10.5" font-weight="500" fill="#5b6577">Enforce MFA on privileged accounts</text><rect x="60" y="139" width="214" height="34" rx="17" fill="#fff" stroke="#e3e6ec" stroke-width="1"/><text x="80" y="160.5" font-family="inherit" font-size="13" font-weight="500" fill="#5b6577">Harden cloud config</text><text x="62" y="28" font-family="inherit" font-size="12" font-weight="600" fill="#2f5bb0">Fix first: reduces 3 risks</text><circle cx="415" cy="46" r="9" fill="#fff" stroke="#5b6577" stroke-width="1.6"/><text x="433" y="50.5" font-family="inherit" font-size="12" fill="#5b6577">Revenue loss</text><circle cx="415" cy="86" r="9" fill="#fff" stroke="#5b6577" stroke-width="1.6"/><text x="433" y="90.5" font-family="inherit" font-size="12" fill="#5b6577">Reputation damage</text><circle cx="415" cy="126" r="9" fill="#fff" stroke="#5b6577" stroke-width="1.6"/><text x="433" y="130.5" font-family="inherit" font-size="12" fill="#5b6577">Operational disruption</text><circle cx="415" cy="166" r="9" fill="#fff" stroke="#5b6577" stroke-width="1.6"/><text x="433" y="170.5" font-family="inherit" font-size="12" fill="#5b6577">Regulatory violations</text></svg>',
   },
   {
     chip: 'Strategy',
@@ -68,7 +69,7 @@ const CARDS: Card[] = [
   {
     chip: 'Reporting',
     title: 'Report without the manual work',
-    body: 'Every risk carries the evidence and calculation behind it, ready to turn into leadership-ready output, without days of manual prep.',
+    body: 'Translate technical risk data into leadership and board-ready updates, backed by the evidence behind them.',
     headerIcon: (
       <svg {...chipIconProps}>
         <path d="M6 3h9l3 3v15H6z" />
@@ -76,11 +77,11 @@ const CARDS: Card[] = [
       </svg>
     ),
     illustration:
-      '<svg viewBox="0 0 600 200" width="100%" height="100%" role="img" aria-label="A one-page leadership report with a risk heat map, ready to share"><rect x="190" y="22" width="150" height="170" rx="10" fill="#fff" stroke="#e3e6ec"/><rect x="176" y="10" width="150" height="170" rx="10" fill="#fff" stroke="#d9dce3"/><rect x="192" y="28" width="74" height="9" rx="4.5" fill="#1a2138"/><rect x="192" y="50" width="28" height="28" rx="4" fill="#e4edff"/><rect x="224" y="50" width="28" height="28" rx="4" fill="#8fb8ff"/><rect x="256" y="50" width="28" height="28" rx="4" fill="#4d8bff"/><rect x="192" y="82" width="28" height="28" rx="4" fill="#e4edff"/><rect x="224" y="82" width="28" height="28" rx="4" fill="#e4edff"/><rect x="256" y="82" width="28" height="28" rx="4" fill="#8fb8ff"/><rect x="192" y="126" width="112" height="7" rx="3.5" fill="#c3c8d2"/><rect x="192" y="142" width="88" height="7" rx="3.5" fill="#c3c8d2"/><rect x="192" y="158" width="100" height="7" rx="3.5" fill="#c3c8d2"/><circle cx="324" cy="20" r="16" fill="#4d8bff"/><path d="M316 20 l6 6 l10 -12" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><text x="370" y="96" font-family="inherit" font-size="16" font-weight="600" fill="#1a2138">Board-ready</text><text x="370" y="118" font-family="inherit" font-size="14" fill="#5b6577">No manual prep</text></svg>',
+      '<svg viewBox="0 0 600 200" width="100%" height="100%" role="img" aria-label="A stack of three report documents turning into an executive briefing"><rect x="182" y="18" width="120" height="150" rx="10" fill="#fff" stroke="#d9dce3"/><rect x="172" y="28" width="120" height="150" rx="10" fill="#fff" stroke="#d9dce3"/><rect x="162" y="38" width="120" height="150" rx="10" fill="#fff" stroke="#e3e6ec"/><rect x="178" y="54" width="60" height="9" rx="4.5" fill="#1a2138"/><rect x="178" y="76" width="24" height="24" rx="4" fill="#4d8bff"/><rect x="206" y="76" width="24" height="24" rx="4" fill="#8fb8ff"/><rect x="178" y="112" width="90" height="7" rx="3.5" fill="#c3c8d2"/><rect x="178" y="126" width="70" height="7" rx="3.5" fill="#c3c8d2"/><rect x="178" y="140" width="80" height="7" rx="3.5" fill="#c3c8d2"/><circle cx="270" cy="46" r="15" fill="#22c55e"/><path d="M262 46 l6 6 l11 -13" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><text x="330" y="88" font-family="inherit" font-size="16" font-weight="600" fill="#1a2138">From technical data to</text><text x="330" y="112" font-family="inherit" font-size="16" font-weight="600" fill="#1a2138">executive briefing, instantly</text></svg>',
   },
   {
     chip: 'Dashboard',
-    title: 'Track progress on your dashboard',
+    title: 'Track progress, past and projected',
     body: 'Track how your programs and risks are progressing against your risk appetite, over time.',
     headerIcon: (
       <svg {...chipIconProps}>
@@ -90,12 +91,36 @@ const CARDS: Card[] = [
       </svg>
     ),
     illustration:
-      '<svg viewBox="0 0 600 200" width="100%" height="100%" role="img" aria-label="Risk trending down over time into the within appetite band"><rect x="60" y="116" width="480" height="54" fill="#e4edff"/><line x1="60" y1="170" x2="540" y2="170" stroke="#c3c8d2"/><text x="528" y="160" text-anchor="end" font-family="inherit" font-size="14" font-weight="500" fill="#2f5bb0">Within appetite</text><polyline points="68,24 140,36 212,31 284,66 356,92 428,112 532,138" fill="none" stroke="#1a2138" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="68" cy="24" r="5" fill="#1a2138"/><circle cx="532" cy="138" r="7" fill="#4d8bff" stroke="#fff" stroke-width="2.5"/><text x="62" y="192" font-family="inherit" font-size="14" fill="#8d96a6">Jan</text><text x="538" y="192" text-anchor="end" font-family="inherit" font-size="14" fill="#8d96a6">Now</text></svg>',
+      '<svg viewBox="0 0 600 200" width="100%" height="100%" role="img" aria-label="Risk trending down over time into the within appetite band, with a projected future segment"><rect x="60" y="116" width="525" height="54" fill="#e4edff"/><line x1="60" y1="170" x2="585" y2="170" stroke="#c3c8d2"/><text x="573" y="160" text-anchor="end" font-family="inherit" font-size="14" font-weight="500" fill="#2f5bb0">Within appetite</text><polyline points="68,24 140,36 212,31 284,66 356,92 428,112 532,138" fill="none" stroke="#1a2138" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><polyline points="532,138 585,158" fill="none" stroke="#4d8bff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="5 6"/><circle cx="68" cy="24" r="5" fill="#1a2138"/><circle cx="532" cy="138" r="6" fill="#1a2138" stroke="#fff" stroke-width="2"/><circle cx="585" cy="158" r="6" fill="#fff" stroke="#4d8bff" stroke-width="2.5"/><text x="62" y="192" font-family="inherit" font-size="14" fill="#8d96a6">Jan</text><text x="518" y="192" text-anchor="end" font-family="inherit" font-size="13" fill="#8d96a6">Now</text><text x="583" y="192" text-anchor="end" font-family="inherit" font-size="13" fill="#8d96a6">Future</text></svg>',
   },
 ];
 
+const ChevronIcon = ({ direction }: { direction: 'left' | 'right' }) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    {direction === 'left' ? <polyline points="15,6 9,12 15,18" /> : <polyline points="9,6 15,12 9,18" />}
+  </svg>
+);
+
 export default function WhatRixemDoes() {
-  const { sectionRef, trackRef, active } = useFeaturesCarousel(CARDS.length);
+  const { sectionRef, trackRef, active, goToCard } = useFeaturesCarousel(CARDS.length);
+
+  const navBtnStyle: CSSProperties = {
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    width: 44,
+    height: 44,
+    borderRadius: '50%',
+    border: '1px solid rgba(251,250,247,0.25)',
+    background: 'rgba(251,250,247,0.08)',
+    color: 'var(--color-bg)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    zIndex: 2,
+    transition: 'background .2s ease, border-color .2s ease',
+  };
 
   return (
     <section id="features" ref={sectionRef} style={{ position: 'relative', height: '500vh' }}>
@@ -107,7 +132,28 @@ export default function WhatRixemDoes() {
           </p>
         </div>
 
-        <div ref={trackRef} style={{ flex: 1, minHeight: 0, display: 'flex', alignItems: 'center', overflowX: 'hidden', overflowY: 'hidden' }}>
+        <div style={{ position: 'relative', flex: 1, minHeight: 0 }}>
+        <button
+          type="button"
+          className="carousel-nav-btn"
+          aria-label="Previous"
+          onClick={() => goToCard(active - 1)}
+          disabled={active === 0}
+          style={{ ...navBtnStyle, left: 12, opacity: active === 0 ? 0.35 : 1, cursor: active === 0 ? 'default' : 'pointer' }}
+        >
+          <ChevronIcon direction="left" />
+        </button>
+        <button
+          type="button"
+          className="carousel-nav-btn"
+          aria-label="Next"
+          onClick={() => goToCard(active + 1)}
+          disabled={active === CARDS.length - 1}
+          style={{ ...navBtnStyle, right: 12, opacity: active === CARDS.length - 1 ? 0.35 : 1, cursor: active === CARDS.length - 1 ? 'default' : 'pointer' }}
+        >
+          <ChevronIcon direction="right" />
+        </button>
+        <div ref={trackRef} style={{ height: '100%', display: 'flex', alignItems: 'center', overflowX: 'hidden', overflowY: 'hidden' }}>
           <div style={{ display: 'flex', gap: 'var(--space-6)', padding: '0 calc(50% - 340px)', width: 'max-content' }}>
             {CARDS.map((card, i) => {
               const isActive = active === i;
@@ -185,14 +231,22 @@ export default function WhatRixemDoes() {
             })}
           </div>
         </div>
+        </div>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: 10, marginTop: 6 }}>
           {CARDS.map((card, i) => (
-            <span
+            <button
               key={card.chip}
+              type="button"
+              aria-label={`Go to ${card.title}`}
+              aria-current={active === i}
+              onClick={() => goToCard(i)}
               style={{
                 width: 34,
                 height: 4,
+                padding: 0,
+                border: 0,
+                cursor: 'pointer',
                 background: active === i ? 'var(--color-accent-300)' : 'rgba(251,250,247,0.25)',
                 transition: 'background .3s ease',
               }}

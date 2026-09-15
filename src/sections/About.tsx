@@ -23,12 +23,12 @@ export default function About() {
             decade of experience in cyber risk and governance.
           </p>
           <p style={{ fontSize: 16, opacity: 0.8, margin: '0 0 var(--space-3)' }}>
-            I saw security teams drowning in data while leaders struggled to turn it into confident, defensible
-            decisions.
+            Along the way, I saw security teams drowning in data while leaders struggled to turn it into confident,
+            defensible decisions.
           </p>
           <p style={{ fontSize: 16, opacity: 0.8, margin: '0 0 var(--space-4)' }}>
-            I built Rixem to bridge that gap: it turns live Microsoft security signals into risk intelligence in the
-            language the business already speaks.
+            Rixem bridges that gap: it turns live Microsoft security signals into risk intelligence in the language
+            the business already speaks.
           </p>
           <blockquote
             style={{
@@ -41,7 +41,7 @@ export default function About() {
               color: 'var(--color-text)',
             }}
           >
-            My goal is simple: empower teams to focus on reducing risk, not chasing evidence.
+            My goal: empower teams to focus on reducing risk, not chasing evidence.
           </blockquote>
         </div>
 

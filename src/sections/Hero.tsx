@@ -11,14 +11,14 @@ const ArrowRight = ({ size = 17 }: { size?: number }) => (
 
 export default function Hero({ ctaHref }: HeroProps) {
   return (
-    <section style={{ position: 'relative', flex: 1, display: 'flex', alignItems: 'center' }}>
+    <section style={{ position: 'relative', flex: 1, display: 'flex', alignItems: 'center', minHeight: '92vh' }}>
       <div
         className="hero-grid"
         style={{
           position: 'relative',
-          maxWidth: 1200,
+          maxWidth: 1240,
           margin: '0 auto',
-          padding: 'calc(var(--space-8) * 1.2) var(--space-6) calc(var(--space-8) * 1.5)',
+          padding: 'calc(var(--space-8) * 1.4) var(--space-6) calc(var(--space-8) * 1.8)',
           display: 'grid',
           gridTemplateColumns: '1.1fr 1fr',
           gap: 'calc(var(--space-8) * 2)',
@@ -27,13 +27,13 @@ export default function Hero({ ctaHref }: HeroProps) {
         }}
       >
         <div style={{ position: 'relative' }}>
-          <h1 style={{ fontSize: 60, lineHeight: 1.02, margin: '0 0 var(--space-4)', color: 'var(--color-bg)', letterSpacing: '-0.01em' }}>
-            One connected <span style={{ color: 'var(--color-accent-300)' }}>Cyber risk graph.</span>
+          <h1 style={{ fontSize: 72, lineHeight: 1.0, margin: '0 0 var(--space-4)', color: 'var(--color-bg)', letterSpacing: '-0.015em' }}>
+            One connected <span style={{ color: 'var(--color-accent-300)' }}>cyber risk graph.</span>
           </h1>
-          <p style={{ fontFamily: 'var(--font-heading)', fontWeight: 600, fontSize: 23, color: 'var(--color-accent-300)', margin: '0 0 var(--space-2)', lineHeight: 1.3 }}>
+          <p style={{ fontFamily: 'var(--font-heading)', fontWeight: 600, fontSize: 27, color: 'var(--color-accent-300)', margin: '0 0 var(--space-3)', lineHeight: 1.3 }}>
             Prioritise, Reduce, Communicate Cyber Risk.
           </p>
-          <p style={{ fontSize: 17, color: 'rgba(251,250,247,0.7)', maxWidth: 500, margin: '0 0 var(--space-4)' }}>
+          <p style={{ fontSize: 18, color: 'rgba(251,250,247,0.7)', maxWidth: 560, margin: '0 0 var(--space-6)' }}>
             Built on your own risk framework. Powered by the Microsoft security data you already have.
           </p>
           <div style={{ display: 'flex', gap: 'var(--space-4)' }}>
@@ -46,11 +46,11 @@ export default function Hero({ ctaHref }: HeroProps) {
                 gap: 8,
                 fontFamily: 'var(--font-heading)',
                 fontWeight: 600,
-                fontSize: 15,
+                fontSize: 16,
                 color: '#ffffff',
                 borderRadius: 12,
                 border: '1px solid transparent',
-                padding: 'var(--space-3) var(--space-6)',
+                padding: 'var(--space-4) var(--space-6)',
                 transition: 'transform .2s ease, box-shadow .2s ease',
                 backgroundColor: 'var(--color-accent)',
               }}
@@ -66,11 +66,11 @@ export default function Hero({ ctaHref }: HeroProps) {
                 alignItems: 'center',
                 fontFamily: 'var(--font-heading)',
                 fontWeight: 600,
-                fontSize: 15,
+                fontSize: 16,
                 color: 'var(--color-bg)',
                 borderRadius: 12,
                 border: '1px solid rgba(251,250,247,0.3)',
-                padding: 'var(--space-3) var(--space-6)',
+                padding: 'var(--space-4) var(--space-6)',
                 transition: 'background .2s ease, border-color .2s ease',
               }}
             >

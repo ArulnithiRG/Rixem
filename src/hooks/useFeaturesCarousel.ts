@@ -34,5 +34,16 @@ export function useFeaturesCarousel(cardCount: number) {
     return () => window.removeEventListener('scroll', onScroll);
   }, [cardCount]);
 
-  return { sectionRef, trackRef, active };
+  /** Scroll the page so a given card becomes active — powers clickable dots/arrows. */
+  const goToCard = (index: number) => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const clamped = Math.min(cardCount - 1, Math.max(0, index));
+    const elementTop = el.getBoundingClientRect().top + window.scrollY;
+    const total = el.offsetHeight - window.innerHeight;
+    const progress = (clamped + 0.5) / cardCount;
+    window.scrollTo({ top: elementTop + progress * total, behavior: 'smooth' });
+  };
+
+  return { sectionRef, trackRef, active, goToCard };
 }
