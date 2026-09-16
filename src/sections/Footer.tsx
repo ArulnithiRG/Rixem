@@ -5,7 +5,7 @@ const FOOTER_LINKS = [
   { href: '#features', label: 'Features' },
   { href: '#how', label: 'How It Works' },
   { href: '#about', label: 'About' },
-  { href: 'mailto:farah@rixem.co?subject=Rixem%20enquiry', label: 'Contact' },
+  { href: 'mailto:hello@rixem.co?subject=Rixem%20enquiry', label: 'Contact' },
 ] as const;
 
 export default function Footer() {

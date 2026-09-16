@@ -88,7 +88,7 @@ export default function Header({ ctaHref }: HeaderProps) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
           <a
             className="nav-contact-link nav-link-hover"
-            href="mailto:farah@rixem.co?subject=Rixem%20enquiry"
+            href="mailto:hello@rixem.co?subject=Rixem%20enquiry"
             style={{ fontSize: 14, color: navTextColor, transition: 'color .2s ease' }}
           >
             Contact
@@ -184,7 +184,7 @@ export default function Header({ ctaHref }: HeaderProps) {
             About
           </a>
           <a
-            href="mailto:farah@rixem.co?subject=Rixem%20enquiry"
+            href="mailto:hello@rixem.co?subject=Rixem%20enquiry"
             onClick={closeMenu}
             style={{ fontSize: 16, color: 'var(--color-text)', minHeight: 48, display: 'flex', alignItems: 'center' }}
           >

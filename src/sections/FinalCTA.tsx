@@ -45,7 +45,7 @@ export default function FinalCTA({ ctaHref }: FinalCTAProps) {
             <ArrowRight />
           </a>
           <a
-            href="mailto:farah@rixem.co?subject=Rixem%20enquiry"
+            href="mailto:hello@rixem.co?subject=Rixem%20enquiry"
             className="hero-cta-secondary"
             style={{
               display: 'inline-flex',
