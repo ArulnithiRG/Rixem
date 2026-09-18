@@ -12,6 +12,7 @@ export default function Footer() {
   return (
     <footer style={{ background: 'var(--color-bg)', width: '100%' }}>
       <div
+        className="footer-row"
         style={{
           maxWidth: 1200,
           margin: '0 auto',
@@ -19,13 +20,14 @@ export default function Footer() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          gap: 'var(--space-4)',
           borderTop: '1px solid var(--color-divider)',
         }}
       >
         <div style={{ color: 'var(--color-text)' }}>
           <RixemLogo size={16} />
         </div>
-        <div style={{ display: 'flex', gap: 'var(--space-6)' }}>
+        <div className="footer-links" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 'var(--space-6)' }}>
           {FOOTER_LINKS.map((link) => (
             <a key={link.href} href={link.href} style={{ fontSize: 13, color: 'rgba(26,33,56,0.65)' }}>
               {link.label}

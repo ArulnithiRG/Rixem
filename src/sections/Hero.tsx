@@ -26,17 +26,19 @@ const GridIcon = () => (
 
 const HeroChip = ({ icon, label }: { icon: JSX.Element; label: string }) => (
   <span
+    className="hero-chip"
     style={{
       display: 'inline-flex',
       alignItems: 'center',
-      gap: 8,
-      fontSize: 13,
+      gap: 6,
+      fontSize: 'clamp(11px, 1vw + 8px, 13px)',
       fontWeight: 500,
       color: 'rgba(251,250,247,0.85)',
       border: '1px solid rgba(251,250,247,0.25)',
       borderRadius: 999,
-      padding: '8px 14px',
+      padding: '7px 12px',
       background: 'rgba(251,250,247,0.06)',
+      whiteSpace: 'nowrap',
     }}
   >
     {icon}
@@ -46,7 +48,7 @@ const HeroChip = ({ icon, label }: { icon: JSX.Element; label: string }) => (
 
 export default function Hero({ ctaHref }: HeroProps) {
   return (
-    <section style={{ position: 'relative', flex: 1, display: 'flex', alignItems: 'center', minHeight: '92vh' }}>
+    <section className="hero-section" style={{ position: 'relative', flex: 1, display: 'flex', alignItems: 'center' }}>
       <div
         className="hero-grid"
         style={{
@@ -55,23 +57,23 @@ export default function Hero({ ctaHref }: HeroProps) {
           margin: '0 auto',
           padding: 'calc(var(--space-8) * 1.4) var(--space-6) calc(var(--space-8) * 1.8)',
           display: 'grid',
-          gridTemplateColumns: '1.1fr 1fr',
+          gridTemplateColumns: '1fr 1.1fr',
           gap: 'calc(var(--space-8) * 2)',
           alignItems: 'center',
           width: '100%',
         }}
       >
-        <div style={{ position: 'relative' }}>
-          <h1 style={{ fontSize: 72, lineHeight: 1.0, margin: '0 0 var(--space-4)', color: 'var(--color-bg)', letterSpacing: '-0.015em' }}>
+        <div style={{ position: 'relative', minWidth: 0 }}>
+          <h1 style={{ fontSize: 'clamp(2.25rem, 3vw + 2rem, 4.5rem)', lineHeight: 1.05, margin: '0 0 var(--space-4)', color: 'var(--color-bg)', letterSpacing: '-0.015em' }}>
             One connected <span style={{ color: 'var(--color-accent-300)' }}>cyber risk graph.</span>
           </h1>
-          <p style={{ fontFamily: 'var(--font-heading)', fontWeight: 600, fontSize: 27, color: 'var(--color-accent-300)', margin: '0 0 var(--space-3)', lineHeight: 1.3 }}>
+          <p style={{ fontFamily: 'var(--font-heading)', fontWeight: 600, fontSize: 'clamp(1.15rem, 0.8vw + 1rem, 1.6875rem)', color: 'var(--color-accent-300)', margin: '0 0 var(--space-3)', lineHeight: 1.3 }}>
             Prioritise, Reduce, Communicate Cyber Risk.
           </p>
-          <p style={{ fontSize: 18, color: 'rgba(251,250,247,0.7)', maxWidth: 560, margin: '0 0 var(--space-6)' }}>
+          <p style={{ fontSize: 'clamp(1rem, 0.3vw + 0.9rem, 1.125rem)', color: 'rgba(251,250,247,0.7)', maxWidth: 560, margin: '0 0 var(--space-6)' }}>
             From months of manual risk analysis to continuous risk intelligence.
           </p>
-          <div style={{ display: 'flex', gap: 'var(--space-4)' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
             <a
               href={ctaHref}
               className="hero-cta-primary"
@@ -123,7 +125,7 @@ export default function Hero({ ctaHref }: HeroProps) {
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, display: 'block' }}
             />
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)', marginTop: 'var(--space-4)' }}>
+          <div className="hero-chip-row" style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)', marginTop: 'var(--space-4)' }}>
             <HeroChip icon={<ShieldIcon />} label="Built on your enterprise risk framework" />
             <HeroChip icon={<GridIcon />} label="Powered by your Microsoft security data" />
           </div>

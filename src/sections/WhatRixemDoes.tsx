@@ -154,7 +154,7 @@ export default function WhatRixemDoes() {
           <ChevronIcon direction="right" />
         </button>
         <div ref={trackRef} style={{ height: '100%', display: 'flex', alignItems: 'center', overflowX: 'hidden', overflowY: 'hidden' }}>
-          <div style={{ display: 'flex', gap: 'var(--space-6)', padding: '0 calc(50% - 300px)', width: 'max-content' }}>
+          <div style={{ display: 'flex', gap: 'var(--space-6)', padding: '0 calc(50% - (var(--fc-card-w) / 2))', width: 'max-content' }}>
             {CARDS.map((card, i) => {
               const isActive = active === i;
               return (
@@ -162,7 +162,7 @@ export default function WhatRixemDoes() {
                   key={card.chip}
                   style={{
                     flex: 'none',
-                    width: 600,
+                    width: 'var(--fc-card-w)',
                     height: 'min(46vh, 400px)',
                     border: `2px solid ${isActive ? 'var(--color-accent-300)' : 'rgba(251,250,247,0.2)'}`,
                     borderRadius: 24,
