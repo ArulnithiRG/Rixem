@@ -41,17 +41,24 @@
   /* Features carousel card width — fixed on desktop, shrinks to fit the
      viewport on tablet/mobile so cards never overflow the page. */
   --fc-card-w: 600px;
+
+  /* Features carousel card height — on narrow viewports the title wraps
+     to more lines, so cards need a taller budget to fit their content
+     without spilling past the rounded card border. */
+  --fc-card-h: min(46vh, 400px);
 }
 
 @media (max-width: 900px) {
   :root {
     --fc-card-w: min(480px, calc(100vw - 96px));
+    --fc-card-h: min(58vh, 470px);
   }
 }
 
 @media (max-width: 600px) {
   :root {
     --fc-card-w: calc(100vw - 64px);
+    --fc-card-h: min(66vh, 540px);
   }
 }
 

@@ -163,7 +163,7 @@ export default function WhatRixemDoes() {
                   style={{
                     flex: 'none',
                     width: 'var(--fc-card-w)',
-                    height: 'min(46vh, 400px)',
+                    height: 'var(--fc-card-h)',
                     border: `2px solid ${isActive ? 'var(--color-accent-300)' : 'rgba(251,250,247,0.2)'}`,
                     borderRadius: 24,
                     background: 'var(--color-bg)',
@@ -171,6 +171,7 @@ export default function WhatRixemDoes() {
                     display: 'flex',
                     flexDirection: 'column',
                     gap: 'var(--space-3)',
+                    overflow: 'hidden',
                     opacity: isActive ? 1 : 0.32,
                     transform: `scale(${isActive ? 1.04 : 0.82})`,
                     transition: 'opacity .35s ease, transform .35s ease, border-color .35s ease',
