@@ -231,10 +231,6 @@
     const s = p(a0), e = p(a1);
     return `M ${s[0]} ${s[1]} A ${r} ${r} 0 ${Math.abs(a1 - a0) > 180 ? 1 : 0} 1 ${e[0]} ${e[1]}`;
   }
-  function tick(x, y, r0, r1, deg) {
-    const c = Math.cos(deg * Math.PI / 180), s = Math.sin(deg * Math.PI / 180);
-    return { x1: (x + r0 * c).toFixed(1), y1: (y + r0 * s).toFixed(1), x2: (x + r1 * c).toFixed(1), y2: (y + r1 * s).toFixed(1) };
-  }
 
   function computeVals(props) {
     const accent = props.accent ?? "#ff6a52";
@@ -265,7 +261,7 @@
         const [rx, ry] = pol(R_RISK, rdeg);
         const cur = 0.34 + R() * 0.5, res = cur * (0.32 + R() * 0.4);
         const isF = ri === FEATURED;
-        if (!isF) risks.push({ x: rx.toFixed(1), y: ry.toFixed(1), px: rx, py: ry, level: cur, cur: arc(rx, ry, 16, cur * 300), res: arc(rx, ry, 12, res * 300), d: t(1.7 + ri * 0.09) });
+        if (!isF) risks.push({ x: rx.toFixed(1), y: ry.toFixed(1), px: rx, py: ry, level: cur, resLevel: res, d: t(1.7 + ri * 0.09) });
         riskEdges.push({ x1: ax.toFixed(1), y1: ay.toFixed(1), x2: rx.toFixed(1), y2: ry.toFixed(1), d: t(1.5 + ri * 0.09) });
         initByRisk[ri] = null;
         if (!isF) {
@@ -291,12 +287,15 @@
     const lmid = 48.5;
     const programLabel = { x: (CX + 470 * Math.cos(lmid * Math.PI / 180)).toFixed(1), y: (CY + 470 * Math.sin(lmid * Math.PI / 180) + 5).toFixed(1) };
 
+    // Current-level appetite breach: the top 3 risks by raw level.
     const over = new Set([...risks.keys()].sort((a, b) => risks[b].level - risks[a].level).slice(0, 3));
+    // Residual-level appetite breach: a separate, smaller set — mitigation
+    // doesn't fully land everywhere, so a couple of risks keep a coral dot
+    // even once most of the ring turns grey.
+    const overResidual = new Set([...risks.keys()].sort((a, b) => risks[b].resLevel - risks[a].resLevel).slice(0, 2));
     risks.forEach((k, i) => {
-      const app = over.has(i) ? Math.max(0.12, k.level - 0.1) : Math.min(0.98, k.level + 0.12);
-      Object.assign(k, tick(k.px, k.py, 11.5, 20.5, -100 + app * 300));
-      k.showTick = showAppetite;
-      k.core = showAppetite && over.has(i);
+      k.currentExceeds = showAppetite && over.has(i);
+      k.residualExceeds = showAppetite && overResidual.has(i);
     });
 
     const clusters = [[1204.8, 389.9], [1207.8, 496.9], [1183.1, 600.9], [1132.3, 695.2]];
@@ -311,9 +310,7 @@
 
     return {
       accent, showLevels: props.showLevels ?? true, showAppetite, t,
-      areas, areaEdges, risks, riskEdges, leaves, leafEdges, pulses, featured, bands, programLabel,
-      featuredCur: arc(1121.7, 528.4, 25, 0.66 * 300),
-      featuredRes: arc(1121.7, 528.4, 19, 0.3 * 300)
+      areas, areaEdges, risks, riskEdges, leaves, leafEdges, pulses, featured, bands, programLabel
     };
   }
 
@@ -321,18 +318,18 @@
     const map = (list, fn) => list.map(fn).join("");
     const delay = (s) => `animation-delay: ${v.t(s)};`;
 
-    // Legend laid out as one row under the circle
-    const items = [
-      { w: 118 + 26, draw: (x) => `<circle cx="${x}" cy="${LEG_Y}" r="7" fill="${PAPER}" stroke="#5b6577" stroke-width="1.6"></circle>
-          <path d="${arc(x, LEG_Y, 13, 0.7 * 300)}" fill="none" stroke="${v.accent}" stroke-width="2.8" stroke-linecap="round"></path>
-          <text x="${x + 26}" y="${LEG_Y + 5.5}" font-size="16" fill="#5b6577">Current risk level</text>` },
-      { w: 186 + 26, draw: (x) => `<circle cx="${x}" cy="${LEG_Y}" r="7" fill="${PAPER}" stroke="#5b6577" stroke-width="1.6"></circle>
-          <path d="${arc(x, LEG_Y, 13, 0.34 * 300)}" fill="none" stroke="#5b6577" stroke-width="2.8" stroke-linecap="round" opacity="0.75"></path>
-          <text x="${x + 26}" y="${LEG_Y + 5.5}" font-size="16" fill="#5b6577">Residual, after mitigation</text>` }
-    ];
-    if (v.showAppetite) items.push({ w: 163 + 26, draw: (x) => `<circle cx="${x}" cy="${LEG_Y}" r="7" fill="${PAPER}" stroke="#5b6577" stroke-width="1.6"></circle>
+    // Legend laid out as one row under the circle — simplified to the two
+    // states that matter: does the current level exceed appetite (outer
+    // ring), and does the residual (post-mitigation) level still exceed it
+    // (inner dot).
+    const items = [];
+    if (v.showAppetite) {
+      items.push({ w: 306, draw: (x) => `<circle cx="${x}" cy="${LEG_Y}" r="13" fill="none" stroke="${v.accent}" stroke-width="2.8"></circle>
+          <text x="${x + 30}" y="${LEG_Y + 5.5}" font-size="16" fill="#5b6577">Current level exceeds appetite</text>` });
+      items.push({ w: 316, draw: (x) => `<circle cx="${x}" cy="${LEG_Y}" r="7" fill="${PAPER}" stroke="#5b6577" stroke-width="1.6"></circle>
           <circle cx="${x}" cy="${LEG_Y}" r="4.2" fill="${v.accent}"></circle>
-          <text x="${x + 26}" y="${LEG_Y + 5.5}" font-size="16" fill="#5b6577">Exceeds risk appetite</text>` });
+          <text x="${x + 26}" y="${LEG_Y + 5.5}" font-size="16" fill="#5b6577">Residual level exceeds appetite</text>` });
+    }
     const GAP = 44;
     const total = items.reduce((s, it) => s + it.w, 0) + GAP * (items.length - 1);
     let lx = 800 - total / 2 + 7;
@@ -367,10 +364,8 @@
     <g>${map(v.risks, k => `
       <g class="rxnode" style="animation-delay: ${k.d}">
         <circle cx="${k.x}" cy="${k.y}" r="8" fill="${PAPER}" stroke="#5b6577" stroke-width="1.6"></circle>
-        ${v.showLevels ? `<path d="${k.res}" fill="none" stroke="#5b6577" stroke-width="2.4" stroke-linecap="round" opacity="0.75"></path>
-        <path d="${k.cur}" fill="none" stroke="${v.accent}" stroke-width="2.4" stroke-linecap="round"></path>` : ""}
-        ${k.showTick ? `<line x1="${k.x1}" y1="${k.y1}" x2="${k.x2}" y2="${k.y2}" stroke="#5b6577" stroke-width="1.6" opacity="0.6"></line>` : ""}
-        ${k.core ? `<circle cx="${k.x}" cy="${k.y}" r="4.2" fill="${v.accent}"></circle>` : ""}
+        ${v.showLevels ? `<circle cx="${k.x}" cy="${k.y}" r="13" fill="none" stroke="${k.currentExceeds ? v.accent : '#c3c8d2'}" stroke-width="2.4"></circle>
+        <circle cx="${k.x}" cy="${k.y}" r="4.2" fill="${k.residualExceeds ? v.accent : '#c3c8d2'}"></circle>` : ""}
       </g>`)}</g>
 
     <g>${map(v.areas, a => `<circle cx="${a.x}" cy="${a.y}" r="10" fill="#1a2138" class="rxnode" style="animation-delay: ${a.d}"></circle>`)}</g>
@@ -387,8 +382,8 @@
       <line x1="1121.7" y1="528.4" x2="1132.3" y2="695.2" stroke="#b6bcc7" stroke-width="1.2"></line>
       ${map(v.featured, f => `<circle cx="${f.x}" cy="${f.y}" r="5.5" fill="${f.fill === '#fbfaf7' ? PAPER : f.fill}" stroke="${f.stroke}" stroke-width="1.4"></circle>`)}
       <circle cx="1121.7" cy="528.4" r="13" fill="${PAPER}" stroke="#1a2138" stroke-width="2"></circle>
-      ${v.showLevels ? `<path d="${v.featuredRes}" fill="none" stroke="#5b6577" stroke-width="3.4" stroke-linecap="round" opacity="0.75"></path>
-      <path d="${v.featuredCur}" fill="none" stroke="${v.accent}" stroke-width="3.4" stroke-linecap="round"></path>` : ""}
+      ${v.showLevels ? `<circle cx="1121.7" cy="528.4" r="21" fill="none" stroke="${v.accent}" stroke-width="3"></circle>
+      <circle cx="1121.7" cy="528.4" r="7" fill="#c3c8d2"></circle>` : ""}
     </g>
   </g>
 
