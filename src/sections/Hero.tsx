@@ -9,6 +9,41 @@ const ArrowRight = ({ size = 17 }: { size?: number }) => (
   </svg>
 );
 
+const ShieldIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" />
+  </svg>
+);
+
+const GridIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="3" width="8" height="8" />
+    <rect x="13" y="3" width="8" height="8" />
+    <rect x="3" y="13" width="8" height="8" />
+    <rect x="13" y="13" width="8" height="8" />
+  </svg>
+);
+
+const HeroChip = ({ icon, label }: { icon: JSX.Element; label: string }) => (
+  <span
+    style={{
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 8,
+      fontSize: 13,
+      fontWeight: 500,
+      color: 'rgba(251,250,247,0.85)',
+      border: '1px solid rgba(251,250,247,0.25)',
+      borderRadius: 999,
+      padding: '8px 14px',
+      background: 'rgba(251,250,247,0.06)',
+    }}
+  >
+    {icon}
+    {label}
+  </span>
+);
+
 export default function Hero({ ctaHref }: HeroProps) {
   return (
     <section style={{ position: 'relative', flex: 1, display: 'flex', alignItems: 'center', minHeight: '92vh' }}>
@@ -34,7 +69,7 @@ export default function Hero({ ctaHref }: HeroProps) {
             Prioritise, Reduce, Communicate Cyber Risk.
           </p>
           <p style={{ fontSize: 18, color: 'rgba(251,250,247,0.7)', maxWidth: 560, margin: '0 0 var(--space-6)' }}>
-            Built on your own risk framework. Powered by the Microsoft security data you already have.
+            From months of manual risk analysis to continuous risk intelligence.
           </p>
           <div style={{ display: 'flex', gap: 'var(--space-4)' }}>
             <a
@@ -87,6 +122,10 @@ export default function Hero({ ctaHref }: HeroProps) {
               scrolling="no"
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, display: 'block' }}
             />
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)', marginTop: 'var(--space-4)' }}>
+            <HeroChip icon={<ShieldIcon />} label="Built on your enterprise risk framework" />
+            <HeroChip icon={<GridIcon />} label="Powered by your Microsoft security data" />
           </div>
         </div>
       </div>

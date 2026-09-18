@@ -287,12 +287,14 @@
     const lmid = 48.5;
     const programLabel = { x: (CX + 470 * Math.cos(lmid * Math.PI / 180)).toFixed(1), y: (CY + 470 * Math.sin(lmid * Math.PI / 180) + 5).toFixed(1) };
 
-    // Current-level appetite breach: the top 3 risks by raw level.
-    const over = new Set([...risks.keys()].sort((a, b) => risks[b].level - risks[a].level).slice(0, 3));
-    // Residual-level appetite breach: a separate, smaller set — mitigation
-    // doesn't fully land everywhere, so a couple of risks keep a coral dot
-    // even once most of the ring turns grey.
-    const overResidual = new Set([...risks.keys()].sort((a, b) => risks[b].resLevel - risks[a].resLevel).slice(0, 2));
+    // Current-level appetite breach: the top 12 risks by raw level get a
+    // coral outer ring.
+    const over = new Set([...risks.keys()].sort((a, b) => risks[b].level - risks[a].level).slice(0, 12));
+    // Residual-level appetite breach (inner dot) must be a subset of the
+    // current breach — a risk's residual can only read as still-over-appetite
+    // if its current level already does. Pick the 5 worst residuals *within*
+    // that set of 12.
+    const overResidual = new Set([...over].sort((a, b) => risks[b].resLevel - risks[a].resLevel).slice(0, 5));
     risks.forEach((k, i) => {
       k.currentExceeds = showAppetite && over.has(i);
       k.residualExceeds = showAppetite && overResidual.has(i);

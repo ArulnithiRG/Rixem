@@ -1,7 +1,7 @@
 /**
- * Placeholder badge chip — swap for the real UQ Ventures badge artwork once
- * it's available. Deliberately styled as an outlined text chip rather than
- * an approximation of the real logo.
+ * Placeholder badge chip — swap for the real Microsoft Partner / UQ Ventures
+ * badge artwork once it's available. Deliberately styled as an outlined text
+ * chip rather than an approximation of the real logos.
  */
 function BadgeChip({ label }: { label: string }) {
   return (
@@ -39,9 +39,10 @@ export default function BackedBy() {
           textAlign: 'center',
         }}
       >
-        <h3 style={{ fontSize: 22, margin: 0 }}>Backed by UQ Ventures.</h3>
+        <h3 style={{ fontSize: 22, margin: 0 }}>Supported by Microsoft &amp; UQ.</h3>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 'var(--space-3)' }}>
-          <BadgeChip label="UQ Ventures iLab 2026" />
+          <BadgeChip label="Microsoft Partner — ISV Success" />
+          <BadgeChip label="UQ Ventures — iLab 2026" />
         </div>
       </div>
     </section>
