@@ -51,14 +51,14 @@
 @media (max-width: 900px) {
   :root {
     --fc-card-w: min(480px, calc(100vw - 96px));
-    --fc-card-h: min(58vh, 470px);
+    --fc-card-h: min(50vh, 440px);
   }
 }
 
 @media (max-width: 600px) {
   :root {
     --fc-card-w: calc(100vw - 64px);
-    --fc-card-h: min(66vh, 540px);
+    --fc-card-h: min(54vh, 460px);
   }
 }
 
